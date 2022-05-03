@@ -13,7 +13,7 @@ const getKptFunctionDescription = (fn: KptfileFunction): string => {
   return functionNameAndTag;
 };
 
-export const getKptFileStructuredMetadata = (
+export const getKptfileStructuredMetadata = (
   resource: KubernetesResource,
 ): Metadata => {
   const kptFile = resource as Kptfile;

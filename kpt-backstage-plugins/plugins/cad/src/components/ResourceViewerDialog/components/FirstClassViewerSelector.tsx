@@ -1,10 +1,10 @@
 import React from 'react';
-import { getApplyReplacementsStructuredMetadata } from './FirstClassViewers/StructuredMetadata/resources/apply-replacements';
-import { getConfigMapStructuredMetadata } from './FirstClassViewers/StructuredMetadata/resources/config-map';
-import { getKptFileStructuredMetadata } from './FirstClassViewers/StructuredMetadata/resources/kptfile';
-import { getResourceQuotaStructuredMetadata } from './FirstClassViewers/StructuredMetadata/resources/resource-quota';
+import { getApplyReplacementsStructuredMetadata } from './FirstClassViewers/StructuredMetadata/resources/applyReplacements';
+import { getConfigMapStructuredMetadata } from './FirstClassViewers/StructuredMetadata/resources/configMap';
+import { getKptfileStructuredMetadata } from './FirstClassViewers/StructuredMetadata/resources/kptfile';
+import { getResourceQuotaStructuredMetadata } from './FirstClassViewers/StructuredMetadata/resources/resourceQuota';
 import { getRoleStructuredMetadata } from './FirstClassViewers/StructuredMetadata/resources/role';
-import { getRoleBindingStructuredMetadata } from './FirstClassViewers/StructuredMetadata/resources/role-binding';
+import { getRoleBindingStructuredMetadata } from './FirstClassViewers/StructuredMetadata/resources/roleBinding';
 import { StructuredMetadata } from './FirstClassViewers/StructuredMetadata/StructuredMetadata';
 
 type FirstClassViewerSelectorProps = {
@@ -33,7 +33,7 @@ export const FirstClassViewerSelector = ({
       return (
         <StructuredMetadata
           yaml={yaml}
-          getCustomMetadata={getKptFileStructuredMetadata}
+          getCustomMetadata={getKptfileStructuredMetadata}
         />
       );
 
