@@ -1,0 +1,1 @@
+export { ResourceEditorDialog } from './ResourceEditorDialog';

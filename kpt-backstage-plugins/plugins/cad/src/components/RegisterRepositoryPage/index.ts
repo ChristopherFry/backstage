@@ -1,0 +1,1 @@
+export { RegisterRepositoryPage } from './RegisterRepositoryPage';

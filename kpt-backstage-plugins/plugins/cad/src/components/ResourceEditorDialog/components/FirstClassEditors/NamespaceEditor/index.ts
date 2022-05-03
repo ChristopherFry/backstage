@@ -1,0 +1,1 @@
+export { NamespaceEditor } from './NamespaceEditor';

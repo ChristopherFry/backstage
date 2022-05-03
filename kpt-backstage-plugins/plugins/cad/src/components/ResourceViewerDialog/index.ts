@@ -1,0 +1,1 @@
+export { ResourceViewerDialog } from './ResourceViewerDialog';

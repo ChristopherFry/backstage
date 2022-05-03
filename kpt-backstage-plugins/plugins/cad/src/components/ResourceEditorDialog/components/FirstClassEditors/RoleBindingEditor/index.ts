@@ -1,0 +1,1 @@
+export { RoleBindingEditor } from './RoleBindingEditor';
