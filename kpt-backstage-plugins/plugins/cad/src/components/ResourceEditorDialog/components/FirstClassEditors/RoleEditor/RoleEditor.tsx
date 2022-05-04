@@ -139,6 +139,7 @@ export const RoleEditor = ({ yaml, onUpdatedYaml }: RoleEditorProps) => {
           onClick={() => {
             const nextKey = (last(rules)?.key || 0) + 1;
             setRules([...rules, { key: nextKey }]);
+            setExpanded(`rule-${nextKey}`);
           }}
         >
           Add Rule

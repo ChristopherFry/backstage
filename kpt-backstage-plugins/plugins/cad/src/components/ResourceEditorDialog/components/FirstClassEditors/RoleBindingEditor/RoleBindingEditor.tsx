@@ -251,6 +251,7 @@ export const RoleBindingEditor = ({
           onClick={() => {
             const nextKey = (last(subjects)?.key || 0) + 1;
             setSubjects([...subjects, { key: nextKey, kind: '', name: '' }]);
+            setExpanded(`subject-${nextKey}`);
           }}
         >
           Add Subject

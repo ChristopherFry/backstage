@@ -240,6 +240,7 @@ export const KptfileEditor = ({
           onClick={() => {
             const nextKey = (last(mutators)?.key || 0) + 1;
             setMutators([...mutators, { image: '', key: nextKey }]);
+            setExpanded(`mutator-${nextKey}`);
           }}
         >
           Add Mutator
@@ -250,6 +251,7 @@ export const KptfileEditor = ({
           onClick={() => {
             const nextKey = (last(validators)?.key || 0) + 1;
             setValidators([...validators, { image: '', key: nextKey }]);
+            setExpanded(`validator-${nextKey}`);
           }}
         >
           Add Validator
