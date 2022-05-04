@@ -4,7 +4,7 @@ import React from 'react';
 import { repositoryRouteRef } from '../../routes';
 import { Repository } from '../../types/Repository';
 import { getRepositoryTitle } from '../../utils/repository';
-import { linkStyles } from './styles';
+import { useLinkStyles } from './styles';
 
 type RepositoryLinkProps = {
   repository: Repository;
@@ -19,7 +19,7 @@ export const RepositoryLink = ({
 }: RepositoryLinkProps) => {
   const repositoryRef = useRouteRef(repositoryRouteRef);
 
-  const classes = linkStyles();
+  const classes = useLinkStyles();
   const className = breadcrumb ? classes.breadcrumb : '';
 
   const repositoryName = repository.metadata.name;

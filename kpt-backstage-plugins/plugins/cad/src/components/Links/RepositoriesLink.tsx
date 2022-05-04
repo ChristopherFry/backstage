@@ -2,7 +2,7 @@ import { Link } from '@backstage/core-components';
 import { useRouteRef } from '@backstage/core-plugin-api';
 import React from 'react';
 import { rootRouteRef } from '../../routes';
-import { linkStyles } from './styles';
+import { useLinkStyles } from './styles';
 
 type RepositoriesLinkProps = {
   breadcrumb?: boolean;
@@ -11,7 +11,7 @@ type RepositoriesLinkProps = {
 export const RepositoriesLink = ({ breadcrumb }: RepositoriesLinkProps) => {
   const repositoriesRef = useRouteRef(rootRouteRef);
 
-  const classes = linkStyles();
+  const classes = useLinkStyles();
   const className = breadcrumb ? classes.breadcrumb : '';
 
   return (

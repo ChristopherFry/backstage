@@ -5,7 +5,7 @@ import { packageRouteRef } from '../../routes';
 import { PackageRevision } from '../../types/PackageRevision';
 import { Repository } from '../../types/Repository';
 import { getPackageDescriptor } from '../../utils/repository';
-import { linkStyles } from './styles';
+import { useLinkStyles } from './styles';
 
 type PackageLinkProps = {
   repository: Repository;
@@ -20,7 +20,7 @@ export const PackageLink = ({
 }: PackageLinkProps) => {
   const packageRef = useRouteRef(packageRouteRef);
 
-  const classes = linkStyles();
+  const classes = useLinkStyles();
   const className = breadcrumb ? classes.breadcrumb : '';
 
   const repositoryName = repository.metadata.name;
