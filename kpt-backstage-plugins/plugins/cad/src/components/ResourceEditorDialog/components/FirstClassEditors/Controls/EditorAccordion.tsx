@@ -6,7 +6,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import React, { ChangeEvent, ReactNode } from 'react';
+import React, { ChangeEvent, ReactNode, useEffect, useRef } from 'react';
 
 export type OnAccordionChange = (
   event: ChangeEvent<{}>,
@@ -48,6 +48,20 @@ export const EditorAccordion = ({
   children,
 }: EditorAccordionProps) => {
   const classes = useStyles();
+  const detailsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (expanded && detailsRef.current) {
+      setTimeout(
+        () =>
+          detailsRef.current?.scrollIntoView({
+            block: 'nearest',
+            behavior: 'smooth',
+          }),
+        100,
+      );
+    }
+  }, [expanded]);
 
   return (
     <Accordion expanded={expanded} onChange={onChange}>
@@ -56,7 +70,9 @@ export const EditorAccordion = ({
         <Typography className={classes.description}>{description}</Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <div className={classes.accordionDetails}>{children}</div>
+        <div className={classes.accordionDetails} ref={detailsRef}>
+          {children}
+        </div>
       </AccordionDetails>
     </Accordion>
   );
