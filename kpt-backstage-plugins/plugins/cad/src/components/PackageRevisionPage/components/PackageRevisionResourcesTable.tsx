@@ -11,9 +11,9 @@ import {
 } from '../../../types/KubernetesResource';
 import { PackageRevisionResourcesMap } from '../../../types/PackageRevisionResource';
 import {
-  getKubernetesMapResourcesList,
+  getPackageResourcesFromResourcesMap,
   PackageResource,
-} from '../../../utils/mapResource';
+} from '../../../utils/packageRevisionResources';
 import {
   createMultiResourceYaml,
   getResourcesFromMultiResourceYaml,
@@ -166,7 +166,7 @@ export const PackageRevisionResourcesTable = ({
     { title: '', render: resourceRow => <div>{rowOptions(resourceRow)}</div> },
   ];
 
-  const allResources = getKubernetesMapResourcesList(
+  const allResources = getPackageResourcesFromResourcesMap(
     resourcesMap,
   ) as ResourceRow[];
 
@@ -339,7 +339,7 @@ export const PackageRevisionResourcesTable = ({
           onClose={closeDialog}
           yaml={selectedDialogResource?.yaml ?? ''}
           onSaveYaml={saveUpdatedYaml}
-          packageResources={resourcesMap}
+          packageResources={allResources}
         />
       ) : (
         <ResourceViewerDialog

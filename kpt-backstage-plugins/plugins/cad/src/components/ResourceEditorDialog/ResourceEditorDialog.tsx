@@ -9,7 +9,7 @@ import {
 import { load } from 'js-yaml';
 import React, { Fragment, useEffect, useState } from 'react';
 import { KubernetesResource } from '../../types/KubernetesResource';
-import { PackageRevisionResourcesMap } from '../../types/PackageRevisionResource';
+import { PackageResource } from '../../utils/packageRevisionResources';
 import { YamlViewer } from '../Controls';
 import { FirstClassEditorSelector } from './components/FirstClassEditorSelector';
 
@@ -20,7 +20,7 @@ type ResourceEditorProps = {
   onClose: () => void;
   yaml: string;
   onSaveYaml: OnSaveYamlFn;
-  packageResources: PackageRevisionResourcesMap;
+  packageResources: PackageResource[];
 };
 
 const useStyles = makeStyles({

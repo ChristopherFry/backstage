@@ -11,17 +11,13 @@ import React, {
 } from 'react';
 import usePrevious from 'react-use/lib/usePrevious';
 import { Function } from '../../../../../../types/Function';
-import { PackageRevisionResourcesMap } from '../../../../../../types/PackageRevisionResource';
 import {
   getFunctionNameAndTagFromImage,
   getFunctionNameFromImage,
   getFunctionVersionFromImage,
   groupFunctionsByName,
 } from '../../../../../../utils/function';
-import {
-  getKubernetesMapResourcesList,
-  PackageResource,
-} from '../../../../../../utils/mapResource';
+import { PackageResource } from '../../../../../../utils/packageRevisionResources';
 import { Autocomplete } from '../../../../../Controls/Autocomplete';
 import { Select } from '../../../../../Controls/Select';
 import {
@@ -43,7 +39,7 @@ type kptFunctionEditorProps = {
   kptFunction: KptfileFunctionView;
   onUpdatedKptFunction: OnUpdatedKptFunction;
   allKptFunctions: Function[];
-  packageResourcesMap: PackageRevisionResourcesMap;
+  packageResources: PackageResource[];
 };
 
 export const KptFunctionEditorAccordion = ({
@@ -53,16 +49,11 @@ export const KptFunctionEditorAccordion = ({
   kptFunction,
   onUpdatedKptFunction,
   allKptFunctions,
-  packageResourcesMap,
+  packageResources,
 }: kptFunctionEditorProps) => {
   const CUSTOM_IMAGE = 'Use custom image';
 
-  const allPackageResources: PackageResource[] = useMemo(
-    () => getKubernetesMapResourcesList(packageResourcesMap),
-    [packageResourcesMap],
-  );
-
-  const functionConfigSelectItems: SelectItem[] = allPackageResources
+  const functionConfigSelectItems: SelectItem[] = packageResources
     .map(resource => ({
       label: `${resource.kind}: ${resource.name}`,
       value: resource.filename,

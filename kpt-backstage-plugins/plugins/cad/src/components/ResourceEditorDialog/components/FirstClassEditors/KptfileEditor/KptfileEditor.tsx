@@ -9,11 +9,11 @@ import { configAsDataApiRef } from '../../../../../apis';
 import { Function } from '../../../../../types/Function';
 import { Kptfile, KptfileFunction } from '../../../../../types/Kptfile';
 import { KubernetesKeyValueObject } from '../../../../../types/KubernetesResource';
-import { PackageRevisionResourcesMap } from '../../../../../types/PackageRevisionResource';
 import {
   isMutatorFunction,
   isValidatorFunction,
 } from '../../../../../utils/function';
+import { PackageResource } from '../../../../../utils/packageRevisionResources';
 import { KeyValueEditorAccordion } from '../Controls/KeyValueEditorAccordion';
 import { SingleTextFieldAccordion } from '../Controls/SingleTextFieldAccordion';
 import { useEditorStyles } from '../styles';
@@ -24,7 +24,7 @@ type OnUpdatedYamlFn = (yaml: string) => void;
 type KptfileEditorProps = {
   yaml: string;
   onUpdatedYaml: OnUpdatedYamlFn;
-  packageResources: PackageRevisionResourcesMap;
+  packageResources: PackageResource[];
 };
 
 type State = {
@@ -215,7 +215,7 @@ export const KptfileEditor = ({
           onChange={handleChange(`mutator-${fn.key}`)}
           kptFunction={fn}
           allKptFunctions={allKptMutatorFunctions}
-          packageResourcesMap={packageResources}
+          packageResources={packageResources}
           onUpdatedKptFunction={updateMutatorFunction}
         />
       ))}
@@ -228,7 +228,7 @@ export const KptfileEditor = ({
           onChange={handleChange(`validator-${fn.key}`)}
           kptFunction={fn}
           allKptFunctions={allKptValidatorFunctions}
-          packageResourcesMap={packageResources}
+          packageResources={packageResources}
           onUpdatedKptFunction={updateValidatorFunction}
         />
       ))}

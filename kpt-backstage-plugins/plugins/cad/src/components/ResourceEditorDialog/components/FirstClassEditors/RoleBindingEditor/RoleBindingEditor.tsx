@@ -11,12 +11,11 @@ import React, {
   useState,
 } from 'react';
 import { KubernetesKeyValueObject } from '../../../../../types/KubernetesResource';
-import { PackageRevisionResourcesMap } from '../../../../../types/PackageRevisionResource';
 import {
   RoleBinding,
   RoleBindingSubject,
 } from '../../../../../types/RoleBinding';
-import { getKubernetesMapResourcesList } from '../../../../../utils/mapResource';
+import { PackageResource } from '../../../../../utils/packageRevisionResources';
 import { Select } from '../../../../Controls/Select';
 import { EditorAccordion } from '../Controls/EditorAccordion';
 import { KeyValueEditorAccordion } from '../Controls/KeyValueEditorAccordion';
@@ -29,7 +28,7 @@ type OnUpdatedYamlFn = (yaml: string) => void;
 type RoleBindingEditorProps = {
   yaml: string;
   onUpdatedYaml: OnUpdatedYamlFn;
-  packageResources: PackageRevisionResourcesMap;
+  packageResources: PackageResource[];
 };
 
 type State = {
@@ -54,10 +53,7 @@ export const RoleBindingEditor = ({
   const resourceYaml = load(yaml) as RoleBinding;
 
   const roleResources = useMemo(
-    () =>
-      getKubernetesMapResourcesList(packageResources).filter(
-        r => r.kind === 'Role',
-      ),
+    () => packageResources.filter(resource => resource.kind === 'Role'),
     [packageResources],
   );
 

@@ -1,6 +1,6 @@
 import { Typography } from '@material-ui/core';
 import React from 'react';
-import { PackageRevisionResourcesMap } from '../../../types/PackageRevisionResource';
+import { PackageResource } from '../../../utils/packageRevisionResources';
 import { ConfigMapEditor } from './FirstClassEditors/ConfigMapEditor';
 import { KptfileEditor } from './FirstClassEditors/KptfileEditor';
 import { NamespaceEditor } from './FirstClassEditors/NamespaceEditor';
@@ -16,7 +16,7 @@ type FirstClassEditorSelectorProps = {
   kind: string;
   yaml: string;
   onUpdatedYaml: OnUpdatedYamlFn;
-  packageResources: PackageRevisionResourcesMap;
+  packageResources: PackageResource[];
 };
 
 export const FirstClassEditorSelector = ({
