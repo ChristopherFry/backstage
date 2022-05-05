@@ -6,14 +6,16 @@ Welcome to the Configuration as Data backend plugin!
 
 ### Adding the plugin
 
-Navigate to `packages/backend` of your Backstage app, and install the `@internal/backstage-plugin-cad-backend` package.
+Navigate to `packages/backend` of your Backstage app, and install the
+`@internal/backstage-plugin-cad-backend` package.
 
 ```bash
 # From your Backstage root directory
 yarn add --cwd packages/backend @internal/backstage-plugin-cad-backend
 ```
 
-Next, you'll need to add the plugin to the router in your `backend` package. You can do this by creating a file called `packages/backend/src/plugins/cad.ts`
+Next, you'll need to add the plugin to the router in your `backend` package. You
+can do this by creating a file called `packages/backend/src/plugins/cad.ts`
 
 ```tsx
 import { createRouter } from '@internal/backstage-plugin-cad-backend';
@@ -30,7 +32,8 @@ export default async function createPlugin(
 }
 ```
 
-With the `cad.ts` router setup in place, add the router to `packages/backend/src/index.ts`:
+With the `cad.ts` router setup in place, add the router to
+`packages/backend/src/index.ts`:
 
 ```ts
 import cad from './plugins/cad';
@@ -66,7 +69,8 @@ configAsData:
     authProvider: current-context
 ```
 
-`clusterLocatorMethod` determines where to receive the cluster configuration from
+`clusterLocatorMethod` determines where to receive the cluster configuration
+from
 
 `clusterLocatorMethod.type` determines how the cluster will be located
 
@@ -76,7 +80,8 @@ Valid values:
 | current-context | Connect to the cluster as defined by the kubeconfig current context |
 | in-cluster | Connect to the same cluster that Backstage is running in |
 
-`clusterLocatorMethod.authProvider` determines how the client will authenticate with the cluster.
+`clusterLocatorMethod.authProvider` determines how the client will authenticate
+with the cluster.
 
 Valid values:
 | Values | Description |
