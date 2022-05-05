@@ -7,7 +7,6 @@ import { PackageRevisionResources } from '../types/PackageRevisionResource';
 import { ListRepositories, Repository } from '../types/Repository';
 import { ListRootSyncs, RootSync } from '../types/RootSync';
 import { ListSecrets, Secret } from '../types/Secret';
-import kptFunctionCatalog from './kptFunctionCatalogV2.json';
 
 type KptFunctionCatalog = {
   [functionName: string]: KptFunctionMinorVersion;
@@ -303,7 +302,9 @@ export class PorchRestAPI implements ConfigAsDataApi {
   }
 
   async listCatalogFunctions(): Promise<Function[]> {
-    const functionCatalog: KptFunctionCatalog = kptFunctionCatalog;
+    const functionCatalog: KptFunctionCatalog = await this.cadFetch(
+      'v1/function-catalog',
+    );
 
     const functions: Function[] = [];
 

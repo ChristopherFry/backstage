@@ -33,7 +33,7 @@ export async function createRouter({
   const kubeConfig = getKubernetesConfig(clusterLocatorMethodType);
   const k8sApi = kubeConfig.makeApiClient(CoreV1Api);
 
-  const proxyHealth = (
+  const healthCheck = (
     _: express.Request,
     response: express.Response,
   ): void => {
@@ -41,7 +41,10 @@ export async function createRouter({
     response.send({ status: 'ok' });
   };
 
-  const features = (_: express.Request, response: express.Response): void => {
+  const getFeatures = (
+    _: express.Request,
+    response: express.Response,
+  ): void => {
     const authentication =
       clusterLocatorMethodAuthProvider === ClusterLocatorAuthProvider.GOOGLE
         ? 'google'
@@ -50,6 +53,23 @@ export async function createRouter({
     response.send({
       authentication,
     });
+  };
+
+  const getFunctionCatalog = (
+    _: express.Request,
+    response: express.Response,
+  ): void => {
+    requestLibrary(
+      'https://catalog.kpt.dev/catalog-v2.json',
+      (error, catalogResponse, catalogBody) => {
+        if (error) {
+          response.status(500);
+        } else {
+          response.status(catalogResponse.statusCode);
+          response.send(catalogBody);
+        }
+      },
+    );
   };
 
   const proxyKubernetesRequest = (
@@ -88,8 +108,9 @@ export async function createRouter({
     });
   };
 
-  router.get('/health', proxyHealth);
-  router.get('/v1/features', features);
+  router.get('/health', healthCheck);
+  router.get('/v1/features', getFeatures);
+  router.get('/v1/function-catalog', getFunctionCatalog);
 
   router.get('/*', proxyKubernetesRequest);
   router.post('/*', proxyKubernetesRequest);
