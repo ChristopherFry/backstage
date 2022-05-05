@@ -244,9 +244,6 @@ export class PorchRestAPI implements ConfigAsDataApi {
       `apis/porch.kpt.dev/v1alpha1/namespaces/default/packagerevisions/${packageRevision.metadata.name}`,
       {
         method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
         body: JSON.stringify(packageRevision),
       },
     );
