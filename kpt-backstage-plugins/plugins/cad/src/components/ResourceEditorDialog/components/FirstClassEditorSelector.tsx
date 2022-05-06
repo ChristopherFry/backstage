@@ -1,6 +1,7 @@
 import { Typography } from '@material-ui/core';
 import React from 'react';
 import { PackageResource } from '../../../utils/packageRevisionResources';
+import { ApplyReplacementsEditor } from './FirstClassEditors/ApplyReplacementsEditor';
 import { ConfigMapEditor } from './FirstClassEditors/ConfigMapEditor';
 import { KptfileEditor } from './FirstClassEditors/KptfileEditor';
 import { NamespaceEditor } from './FirstClassEditors/NamespaceEditor';
@@ -29,6 +30,15 @@ export const FirstClassEditorSelector = ({
   const groupVersionKind = `${apiVersion}/${kind}`;
 
   switch (groupVersionKind) {
+    case 'fn.kpt.dev/v1alpha1/ApplyReplacements':
+      return (
+        <ApplyReplacementsEditor
+          yaml={yaml}
+          onUpdatedYaml={onUpdatedYaml}
+          packageResources={packageResources}
+        />
+      );
+
     case 'kpt.dev/v1/Kptfile':
       return (
         <KptfileEditor
