@@ -18,6 +18,7 @@ import {
   groupFunctionsByName,
 } from '../../../../../../utils/function';
 import { PackageResource } from '../../../../../../utils/packageRevisionResources';
+import { sortByLabel } from '../../../../../../utils/selectItem';
 import { Autocomplete } from '../../../../../Controls/Autocomplete';
 import { Select } from '../../../../../Controls/Select';
 import {
@@ -53,12 +54,13 @@ export const KptFunctionEditorAccordion = ({
 }: kptFunctionEditorProps) => {
   const CUSTOM_IMAGE = 'Use custom image';
 
-  const functionConfigSelectItems: SelectItem[] = packageResources
-    .map(resource => ({
+  const functionConfigSelectItems: SelectItem[] = sortByLabel(
+    packageResources.map(resource => ({
       label: `${resource.kind}: ${resource.name}`,
       value: resource.filename,
-    }))
-    .sort((item1, item2) => (item1.label > item2.label ? 1 : -1));
+    })),
+  );
+
   functionConfigSelectItems.unshift({ label: 'none', value: 'none' });
 
   if (

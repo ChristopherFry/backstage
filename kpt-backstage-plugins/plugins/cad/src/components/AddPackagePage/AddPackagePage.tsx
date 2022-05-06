@@ -29,6 +29,7 @@ import {
 } from '../../utils/packageRevision';
 import { getPackageDescriptor } from '../../utils/repository';
 import { getRepositorySummary } from '../../utils/repositorySummary';
+import { sortByLabel } from '../../utils/selectItem';
 import { toLowerCase } from '../../utils/string';
 import { Select } from '../Controls/Select';
 import { PackageLink, RepositoriesLink, RepositoryLink } from '../Links';
@@ -129,13 +130,12 @@ export const AddPackagePage = () => {
 
       const setDownstreamRepositories = (): void => {
         if (repositorySummary.downstreamRepositories) {
-          const downstream: SelectItem[] =
-            repositorySummary.downstreamRepositories
-              .map(repository => ({
-                label: repository.metadata.name,
-                value: repository.metadata.name,
-              }))
-              .sort((c1, c2) => (c1.label > c2.label ? 1 : -1));
+          const downstream: SelectItem[] = sortByLabel(
+            repositorySummary.downstreamRepositories.map(repository => ({
+              label: repository.metadata.name,
+              value: repository.metadata.name,
+            })),
+          );
           setSelectDownstreamRepositoryItems(downstream);
 
           if (downstream.length > 0) {

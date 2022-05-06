@@ -16,6 +16,7 @@ import {
   RoleBindingSubject,
 } from '../../../../../types/RoleBinding';
 import { PackageResource } from '../../../../../utils/packageRevisionResources';
+import { sortByLabel } from '../../../../../utils/selectItem';
 import { Select } from '../../../../Controls/Select';
 import { EditorAccordion } from '../Controls/EditorAccordion';
 import { KeyValueEditorAccordion } from '../Controls/KeyValueEditorAccordion';
@@ -57,10 +58,12 @@ export const RoleBindingEditor = ({
     [packageResources],
   );
 
-  const roleSelectItems: SelectItem[] = roleResources.map(role => ({
-    label: role.name,
-    value: role.name,
-  }));
+  const roleSelectItems: SelectItem[] = sortByLabel(
+    roleResources.map(role => ({
+      label: role.name,
+      value: role.name,
+    })),
+  );
 
   const createResourceState = (): State => ({
     name: resourceYaml.metadata.name,

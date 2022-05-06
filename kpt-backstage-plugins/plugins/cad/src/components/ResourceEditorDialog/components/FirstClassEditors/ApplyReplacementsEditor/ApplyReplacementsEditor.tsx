@@ -14,6 +14,7 @@ import {
   KubernetesResource,
 } from '../../../../../types/KubernetesResource';
 import { PackageResource } from '../../../../../utils/packageRevisionResources';
+import { sortByLabel } from '../../../../../utils/selectItem';
 import { Select } from '../../../../Controls/Select';
 import { EditorAccordion } from '../Controls/EditorAccordion';
 import { KeyValueEditorAccordion } from '../Controls/KeyValueEditorAccordion';
@@ -136,12 +137,14 @@ const getIndexSelectItems = (
 const getPackageSelectItems = (
   packageResources: PackageResource[],
 ): SelectItem[] => {
-  return packageResources
-    .filter(resource => resource.kind !== 'ApplyReplacements')
-    .map(resource => ({
-      label: `${resource.kind}: ${resource.name}`,
-      value: resource.id,
-    }));
+  return sortByLabel(
+    packageResources
+      .filter(resource => resource.kind !== 'ApplyReplacements')
+      .map(resource => ({
+        label: `${resource.kind}: ${resource.name}`,
+        value: resource.id,
+      })),
+  );
 };
 
 const replaceFieldValueSelectItems: SelectItem[] = [
