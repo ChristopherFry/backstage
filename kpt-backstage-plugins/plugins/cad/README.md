@@ -1,7 +1,7 @@
 # Configuration as Data Plugin
 
 Welcome to the Configuration as Data plugin! This plugin powers the WYSIWYG
-Configuration GUI over GitOps using [kpt.dev](https://kpt.dev/) and its new
+Configuration GUI over GitOps using [kpt](https://kpt.dev/) and its new
 Package Orchestrator,
 [porch](https://github.com/GoogleContainerTools/kpt/tree/main/porch).
 

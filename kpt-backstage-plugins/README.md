@@ -5,16 +5,18 @@ into an existing Backstage Application following the READMEs for each plugin.
 For development and testing, the plugins can also be executed with the example
 Backstage Application in this repository.
 
-The primary plugin is [Configuration as Data Plugin](plugins/cad) which powers
-the WYSIWYG Configuration GUI over GitOps using [kpt.dev](https://kpt.dev/) and
-its new Package Orchestrator,
+[Configuration as Data](plugins/cad) is the primary plugin which powers the
+WYSIWYG Configuration GUI over GitOps using [kpt](https://kpt.dev/) and its new
+Package Orchestrator,
 [porch](https://github.com/GoogleContainerTools/kpt/tree/main/porch).
 
-_New to Kpt?_
+_New to kpt?_
 
-Kpt is a git-native, schema-aware, extensible client-side tool for packaging,
-customizing, validating, and applying Kubernetes resources. Read
-[kpt.dev](https://kpt.dev/) to learn more.
+kpt is a package-centric toolchain that enables a WYSIWYG configuration
+authoring, automation, and delivery experience, which simplifies managing
+Kubernetes platforms and KRM-driven infrastructure at scale by manipulating
+declarative Configuration as Data, separated from the code that transforms it.
+Read [kpt.dev](https://kpt.dev/) to learn more.
 
 _New to Backstage?_
 
