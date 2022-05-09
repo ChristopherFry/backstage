@@ -29,7 +29,6 @@ type KptfileEditorProps = {
 
 type State = {
   name: string;
-  namespace: string;
   annotations: KubernetesKeyValueObject;
   labels: KubernetesKeyValueObject;
   description: string;
@@ -51,7 +50,6 @@ export const KptfileEditor = ({
     name: resourceYaml.metadata.name,
     annotations: resourceYaml.metadata.annotations ?? {},
     labels: resourceYaml.metadata.labels ?? {},
-    namespace: resourceYaml.metadata.namespace ?? '',
     description: resourceYaml.info?.description || '',
   });
 
@@ -107,7 +105,6 @@ export const KptfileEditor = ({
     if (!resourceYaml.pipeline) resourceYaml.pipeline = {};
 
     resourceYaml.metadata.name = state.name;
-    resourceYaml.metadata.namespace = state.namespace || undefined;
     resourceYaml.metadata.labels = state.labels;
     resourceYaml.metadata.annotations = state.annotations;
     resourceYaml.info.description = state.description;
@@ -174,13 +171,6 @@ export const KptfileEditor = ({
         onChange={handleChange('name')}
         value={state.name}
         onValueUpdated={value => setState(s => ({ ...s, name: value }))}
-      />
-      <SingleTextFieldAccordion
-        title="Namespace"
-        expanded={expanded === 'namespace'}
-        onChange={handleChange('namespace')}
-        value={state.namespace}
-        onValueUpdated={value => setState(s => ({ ...s, namespace: value }))}
       />
       <SingleTextFieldAccordion
         title="Package Description"

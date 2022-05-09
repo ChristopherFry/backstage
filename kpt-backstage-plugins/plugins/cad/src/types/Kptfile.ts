@@ -11,7 +11,6 @@ export type Kptfile = {
 
 export type KptfileMetadata = {
   name: string;
-  namespace?: string;
   labels?: KubernetesKeyValueObject;
   annotations?: KubernetesKeyValueObject;
 };
