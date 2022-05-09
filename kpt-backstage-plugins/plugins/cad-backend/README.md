@@ -51,7 +51,7 @@ async function main() {
 
 The following configuration will need to be added to `app-config.yaml`:
 
-```
+```yaml
 configAsData:
   clusterLocatorMethod:
     # Determines how the client will locate the Kubernetes cluster.

@@ -44,19 +44,19 @@ To use the Backstage Application in this repository, you will need:
 
 ### Clone Repository
 
-```
+```bash
 git clone https://github.com/christopherfry/backstage.git kpt-backstage-plugins
 cd kpt-backstage-plugins
 ```
 
 ### Install Dependencies
 
-```
+```bash
 yarn install
 ```
 
 ### Running the Backstage Application
 
-```
+```bash
 yarn dev
 ```
