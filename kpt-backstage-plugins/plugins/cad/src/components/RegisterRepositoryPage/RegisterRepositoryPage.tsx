@@ -264,7 +264,10 @@ export const RegisterRepositoryPage = () => {
         repositoryUrl.endsWith('.git')
       ) {
         toSet.type = RepositoryType.GIT;
-      } else if (repositoryUrl.startsWith('gcr.io/')) {
+      } else if (
+        repositoryUrl.startsWith('gcr.io/') ||
+        repositoryUrl.includes('docker.pkg.dev/')
+      ) {
         toSet.type = RepositoryType.OCI;
       }
 
