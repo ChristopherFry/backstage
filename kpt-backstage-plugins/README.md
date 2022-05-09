@@ -36,7 +36,7 @@ To use the Backstage Application in this repository, you will need:
 - [git](https://github.com/git-guides/install-git) installed
 - [Porch (Package Orchestration Server)](https://github.com/GoogleContainerTools/kpt/tree/main/porch)
   installed on a
-  [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine)
+  [Google Kubernetes Engine (GKE)](https://github.com/GoogleContainerTools/kpt/blob/main/site/guides/porch-installation.md)
   cluster
 - The latest
   [Config Management Operator manifest](https://cloud.google.com/anthos-config-management/docs/downloads)
