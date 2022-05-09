@@ -260,7 +260,7 @@ export const RegisterRepositoryPage = () => {
 
       if (
         repositoryUrl.startsWith('https:') ||
-        repositoryUrl.startsWith('git:') ||
+        repositoryUrl.startsWith('git@') ||
         repositoryUrl.endsWith('.git')
       ) {
         toSet.type = RepositoryType.GIT;
