@@ -30,7 +30,7 @@ import { FlatRoutes } from '@backstage/core-app-api';
 import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { PermissionedRoute } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
-import { CadPage } from '@internal/backstage-plugin-cad';
+import { CadPage } from '@kpt/backstage-plugin-cad';
 
 const app = createApp({
   apis,

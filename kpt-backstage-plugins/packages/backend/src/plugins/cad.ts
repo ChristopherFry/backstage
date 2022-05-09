@@ -1,4 +1,4 @@
-import { createRouter } from '@internal/backstage-plugin-cad-backend';
+import { createRouter } from '@kpt/backstage-plugin-cad-backend';
 import { Router } from 'express';
 import { PluginEnvironment } from '../types';
 

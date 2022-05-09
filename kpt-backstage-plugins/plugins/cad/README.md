@@ -36,14 +36,14 @@ application.
 
 ```bash
 # From your Backstage root directory
-yarn add --cwd packages/app @internal/backstage-plugin-cad
+yarn add --cwd packages/app @kpt/backstage-plugin-cad
 ```
 
 Once the package is installed, import the plugin in your app by adding the
 `config-as-data` route to `App.tsx`.
 
 ```tsx
-import { CadPage } from '@internal/backstage-plugin-cad';
+import { CadPage } from '@kpt/backstage-plugin-cad';
 // ...
 
 const routes = (
