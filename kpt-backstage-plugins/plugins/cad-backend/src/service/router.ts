@@ -1,6 +1,5 @@
 import { errorHandler } from '@backstage/backend-common';
 import { Config } from '@backstage/config';
-import { CoreV1Api } from '@kubernetes/client-node';
 import express from 'express';
 import Router from 'express-promise-router';
 import requestLibrary from 'request';
@@ -31,13 +30,18 @@ export async function createRouter({
     getClusterLocatorMethodAuthProvider(cadConfig);
 
   const kubeConfig = getKubernetesConfig(clusterLocatorMethodType);
-  const k8sApi = kubeConfig.makeApiClient(CoreV1Api);
+  const currentCluster = kubeConfig.getCurrentCluster();
+
+  if (!currentCluster) {
+    throw new Error(`Current cluster is not set`);
+  }
+
+  const k8sApiServerUrl = currentCluster.server;
 
   const healthCheck = (
     _: express.Request,
     response: express.Response,
   ): void => {
-    logger.info('Health Check');
     response.send({ status: 'ok' });
   };
 
@@ -79,7 +83,7 @@ export async function createRouter({
     logger.info(`${request.method} ${request.url}`);
 
     const requestOptions: requestLibrary.Options = {
-      baseUrl: k8sApi.basePath,
+      baseUrl: k8sApiServerUrl,
       url: request.url,
       method: request.method,
       body:
